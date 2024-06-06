@@ -12,4 +12,8 @@ Learn more about Slidev on [documentations](https://sli.dev/).
 
 ## Test Project
 
+Install Playwright:
+
+- `npx playwright install`
+
 `npx playwright test`

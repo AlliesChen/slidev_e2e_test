@@ -122,7 +122,7 @@ check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
 ```
 
 <!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
+<Counter :count="10" m="t-4" data-testid="counter" />
 </div>
 
 <style>
@@ -132,11 +132,8 @@ check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
 </style>
 
 ---
-
-# E2E 測試程式碼
-
-You can use Vue components directly inside your slides.
-
+src: ./pages/e2e_test_code.md
+hide: false
 ---
 
 # Clicks Animations
