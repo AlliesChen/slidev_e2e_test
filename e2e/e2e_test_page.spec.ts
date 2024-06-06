@@ -1,17 +1,17 @@
 //#region snippet
 import { test, expect } from '@playwright/test';
 
-const TEST_URL = process.env.page_url || "http://localhost:3000";
+const TEST_PATH = "/7";
 
-test('has title', async ({ page }) => {
-    await page.goto(TEST_URL);
+test('has title', async ({ page, baseURL }) => {
+    await page.goto(baseURL + TEST_PATH);
     const heading = page.getByRole("heading", { name: "E2E 測試 Demo" });
     // Expect a title "to contain" a substring.
     await expect(heading).toBeVisible();
 });
 //#endregion snippet
-test('has a counter', async ({ page }) => {
-    await page.goto(TEST_URL);
+test('has a counter', async ({ page, baseURL }) => {
+    await page.goto(baseURL + TEST_PATH);
     // Wait for the page to be visible
     await expect(page.getByRole("heading", { name: "E2E 測試 Demo" })).toBeVisible();
     const nextSlideBtn = page.getByRole("button", { name: "Go to next slide" });
@@ -21,8 +21,8 @@ test('has a counter', async ({ page }) => {
     await expect(counter).toContainText("10");
 });
 
-test("clicking the button increments the counter", async ({ page }) => {
-    await page.goto(TEST_URL);
+test("clicking the button increments the counter", async ({ page, baseURL }) => {
+    await page.goto(baseURL + TEST_PATH);
     // Wait for the page to be visible
     await expect(page.getByRole("heading", { name: "E2E 測試 Demo" })).toBeVisible();
     const nextSlideBtn = page.getByRole("button", { name: "Go to next slide" });
