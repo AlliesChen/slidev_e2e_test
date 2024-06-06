@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const TEST_URL = "http://localhost:3030/6?clicks=2";
+const TEST_URL = "http://localhost:3030/6";
 
 test('has title', async ({ page }) => {
     await page.goto(TEST_URL);
@@ -11,11 +11,23 @@ test('has title', async ({ page }) => {
 
 test('has a counter', async ({ page }) => {
     await page.goto(TEST_URL);
+    // Wait for the page to be visible
+    await expect(page.getByRole("heading", { name: "E2E 測試 Demo" })).toBeVisible();
+    const nextSlideBtn = page.getByRole("button", { name: "Go to next slide" });
+    await nextSlideBtn.click({ clickCount: 2});
     // Expects page to have a counter component.
-    const counter = page.getByTestId("counter");
-    expect(counter).toBeDefined();
+    const counter = page.getByTestId("counter").nth(1);
+    await expect(counter).toContainText("10");
+});
 
-    // Click the plus button..
-    await page.getByRole("button", { name: /\+/ }).click();
-    await expect(counter).toHaveText("11");
+test("clicking the button increments the counter", async ({ page }) => {
+    await page.goto(TEST_URL);
+    // Wait for the page to be visible
+    await expect(page.getByRole("heading", { name: "E2E 測試 Demo" })).toBeVisible();
+    const nextSlideBtn = page.getByRole("button", { name: "Go to next slide" });
+    await nextSlideBtn.click({ clickCount: 2});
+    // Expects page to have a counter component.
+    const incrementBtn = page.getByRole("button", { name: "+" });
+    await incrementBtn.click();
+    expect(page.getByTestId("counter").getByText("11")).toBeTruthy();
 });
