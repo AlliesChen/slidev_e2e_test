@@ -65,18 +65,17 @@ hide: false
 ---
 ---
 
-# Monaco Editor
+# 測試的成本
 
-Slidev provides built-in Moanco Editor support.
-
-Add `{monaco}` to the code block to turn it into an editor:
+與單元測試做比較
 
 ```ts {monaco}
-import { ref } from 'vue'
+import { it, expect } from 'vitest'
 import hello from './external'
 
-const code = ref('const a = 1')
-hello()
+it('return a string', () => {
+  expect(hello()).toBe("Hello from snippets/external.ts");
+});
 ```
 
 Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
