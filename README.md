@@ -16,4 +16,10 @@ Install Playwright:
 
 - `npx playwright install`
 
+Run tests:
+
 `npx playwright test`
+
+## CI
+
+Reference: [How to use Playwright with GitHub Actions for e2e testing of Vercel preview deployments](https://cushionapp.com/journal/how-to-use-playwright-with-github-actions-for-e2e-testing-of-vercel-preview)
