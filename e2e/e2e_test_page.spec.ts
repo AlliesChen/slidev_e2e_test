@@ -1,7 +1,7 @@
 //#region snippet
 import { test, expect } from '@playwright/test';
 
-const TEST_URL = "http://localhost:3030/7";
+const TEST_URL = process.env.page_url || "http://localhost:3000";
 
 test('has title', async ({ page }) => {
     await page.goto(TEST_URL);
