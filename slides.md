@@ -67,25 +67,26 @@ hide: false
 
 # 測試的成本
 
-與單元測試做比較
+與單元測試及整合測試做比較
 
-```ts {monaco}
-import { it, expect } from 'vitest'
-import hello from './external'
+<div v-click.hide=1>
 
-it('return a string', () => {
-  expect(hello()).toBe("Hello from snippets/external.ts");
-});
-```
+單元測試：
 
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
+<<< @/snippets/external.spec.ts
 
-```ts {monaco-run}
-function fibonacci(n: number): number {
-  return n <= 1
-    ? n
-    : fibonacci(n - 1) + fibonacci(n - 2) // you know, this is NOT the best way to do it :P
+</div>
+
+<div v-click=1>
+
+整合測試：
+
+<<< @/components/counter.spec.ts
+
+</div>
+
+<style>
+.slidev-vclick-hidden {
+  display: none;
 }
-
-console.log(Array.from({ length: 10 }, (_, i) => fibonacci(i + 1)))
-```
+</style>
